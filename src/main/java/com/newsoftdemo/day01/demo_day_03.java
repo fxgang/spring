@@ -19,5 +19,6 @@ public class demo_day_03 {
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         IAccountService as = new AccountServiceImpl();
         as.saveAccount();
+        System.out.println("类耦合测试，标准三层结构");
     }
 }
