@@ -21,7 +21,7 @@ public class demo_day_04 {
         IAccountService as = (IAccountService)BeanFactory.getBean("accountService");
         System.out.println(as);
         as.saveAccount();
-
+        System.out.println("已经实现单例");
         //#region 单例验证
         /*
         IAccountService as1 = (IAccountService)BeanFactory.getBean("accountService");
