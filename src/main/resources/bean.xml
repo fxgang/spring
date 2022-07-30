@@ -114,5 +114,58 @@
         <constructor-arg name="age" value="28"></constructor-arg>
         <constructor-arg name="birthday" ref="bean_birthday_assign"></constructor-arg>
     </bean>
-
+    <!-- Set注入 -->
+    <bean id="yuwen" class="com.newsoftdemo.model.Course">
+        <property name="name" value="语文"></property>
+        <property name="score" value="88.89"></property>
+    </bean>
+    <bean id="shuxue" class="com.newsoftdemo.model.Course">
+        <property name="name" value="数学"></property>
+        <property name="score" value="78.99"></property>
+    </bean>
+    <bean id="yinyu" class="com.newsoftdemo.model.Course">
+        <property name="name" value="英语"></property>
+        <property name="score" value="86.00"></property>
+    </bean>
+    <bean id="accountService92" class="com.newsoftdemo.day01.service.impl.AccountService10Impl">
+        <property name="age" value="29"></property>
+        <property name="name" value="虎妞书画"></property>
+        <property name="birthday" ref="bean_birthday"></property>
+        <property name="course">
+            <array>
+                <value>语文</value>
+                <value>高数</value>
+                <value>英语</value>
+                <value>基础会计</value>
+            </array>
+        </property>
+        <property name="interest">
+            <list>
+                <value>舞蹈班</value>
+                <value>篮球班</value>
+                <value>书法班</value>
+            </list>
+        </property>
+        <property name="teacher">
+            <set>
+                <value>李志强</value>
+                <value>陈志伟</value>
+                <value>陈伟强</value>
+                <value>李百度</value>
+            </set>
+        </property>
+        <property name="score">
+            <map>
+                <entry key="yuwen" value-ref="yuwen"></entry>
+                <entry key="shuxue" value-ref="shuxue"></entry>
+                <entry key="yingyu" value-ref="yinyu"></entry>
+            </map>
+        </property>
+        <property name="specialty">
+            <props>
+                <prop key="1">奥数</prop>
+                <prop key="2">游泳</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
