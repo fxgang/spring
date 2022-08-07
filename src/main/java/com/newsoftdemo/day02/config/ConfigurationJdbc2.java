@@ -2,6 +2,7 @@ package com.newsoftdemo.day02.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.apache.commons.dbutils.QueryRunner;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
@@ -32,12 +33,26 @@ public class ConfigurationJdbc2 {
 
     @Bean(name="runner")
     @Scope("prototype")
-    public QueryRunner createQueryRunner(DataSource dataSource){
-        return new QueryRunner(dataSource);
+    public QueryRunner createQueryRunner(@Qualifier("dataSource") DataSource dataSource0){
+        return new QueryRunner(dataSource0);
     }
 
     @Bean(name="dataSource")
     public DataSource createDataSource(){
+        try {
+            ComboPooledDataSource ds = new ComboPooledDataSource();
+            ds.setDriverClass(driver);
+            ds.setJdbcUrl(url);
+            ds.setUser(user);
+            ds.setPassword(pass);
+            return ds;
+        }catch (Exception ex){
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @Bean(name="dataSource2")
+    public DataSource createDataSource2(){
         try {
             ComboPooledDataSource ds = new ComboPooledDataSource();
             ds.setDriverClass(driver);
